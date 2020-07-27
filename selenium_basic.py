@@ -24,4 +24,16 @@ driver.find_element(By.CSS_SELECTOR, "input#user-message").send_keys(TEST_DATA['
 driver.find_element(By.CSS_SELECTOR, "form#get-input button").click()
 
 assert driver.find_element(By.ID, "display").text == TEST_DATA['single_input']
+time.sleep(3)
+
+driver.find_element_by_css_selector("#sum1").send_keys(TEST_DATA['two_input_first'])
+time.sleep(3)
+
+driver.find_element_by_css_selector("#sum2").send_keys(TEST_DATA['two_input_second'])
+
+time.sleep(3)
+
+driver.find_element_by_css_selector('[onclick="return total()"]').click()
+time.sleep(3)
+assert driver.find_element_by_css_selector("#displayvalue").text == '777'
 driver.quit()
